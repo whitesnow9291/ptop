@@ -8,13 +8,17 @@ import Text from './components/Text'
 import { COLORS } from '../assets/colors';
 import { useNavigation } from '@react-navigation/native';
 import { CustomAdMobBanner } from './components/Admob';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const styles = StyleSheet.create({
     chordItem: {
         backgroundColor: COLORS.white,
         padding: 10,
         borderBottomColor: COLORS.gray,
-        borderBottomWidth: 0.2
+        borderBottomWidth: 0.2,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 })
 const ITEM_HEIGHT = 30
@@ -25,15 +29,17 @@ export const ChordListScreen = (props) => {
         navigation.navigate('ChordDetailScreen', chord = { chord })
     }
     const renderItem = ({ item }) => (
-        <TouchableOpacity style={styles.chordItem} onPress={() => onNavigateToChordDetail(item)}>
+        <TouchableOpacity style={styles.chordItem}
+            onPress={() => onNavigateToChordDetail(item)}>
             <Text>{item.label}</Text>
+            <Ionicons name="chevron-forward-outline" size={32} color='gray'/>
         </TouchableOpacity>
     );
 
     return (
-        <Content style={{flex: 1}}>
+        <Content style={{ flex: 1 }}>
             <CustomAdMobBanner />
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
                 <FlatList
                     data={limitedChords}
                     renderItem={renderItem}
