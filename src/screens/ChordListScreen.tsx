@@ -31,13 +31,15 @@ export const ChordListScreen = (props) => {
     );
 
     return (
-        <Content>
+        <Content style={{flex: 1}}>
             <CustomAdMobBanner />
-            <FlatList
-                data={limitedChords}
-                renderItem={renderItem}
-                keyExtractor={item => String(item.id)}
-            />
+            <View style={{flex: 1}}>
+                <FlatList
+                    data={limitedChords}
+                    renderItem={renderItem}
+                    keyExtractor={item => String(item.id)}
+                />
+            </View>
         </Content>
     );
 }

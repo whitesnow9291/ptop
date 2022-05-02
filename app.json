@@ -19,9 +19,17 @@
     "ios": {
       "supportsTablet": true,
       "config": {
-        // ...
-        "googleMobileAdsAppId": "Ca-app-pub-9348279741233172~1671285069" // sample id, replace with your own
-      }
+        "googleMobileAdsAppId": "Ca-app-pub-9348279741233172~1671285069"
+      },
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you.",
+        "SKAdNetworkItems": [
+          {
+            "SKAdNetworkIdentifier": "cstr6suwn9.skadnetwork"
+          }
+        ]
+      },
+      "bundleIdentifier": "com.nomuranori9291.ptop"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,9 +37,9 @@
         "backgroundColor": "#FFFFFF"
       },
       "config": {
-        // ...
-        "googleMobileAdsAppId": "Ca-app-pub-9348279741233172~1671285069" // sample id, replace with your own
-      }
+        "googleMobileAdsAppId": "Ca-app-pub-9348279741233172~1671285069"
+      },
+      "package": "com.nomuranori9291.ptop"
     },
     "web": {
       "favicon": "./assets/favicon.png"
