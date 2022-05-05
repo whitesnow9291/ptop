@@ -10,7 +10,7 @@ podfile_properties = JSON.parse(File.read('./Podfile.properties.json')) rescue {
 target 'ptop' do
   use_expo_modules!
   config = use_native_modules!
-
+  pod 'Google-Mobile-Ads-SDK'
   use_react_native!(
     :path => config[:reactNativePath],
     :hermes_enabled => podfile_properties['expo.jsEngine'] == 'hermes'
@@ -39,6 +39,16 @@ target 'ptop' do
   end
 
   post_integrate do |installer|
+    begin
+      expo_patch_react_imports!(installer)
+    rescue => e
+      Pod::UI.warn e
+    end
+    begin
+      expo_patch_react_imports!(installer)
+    rescue => e
+      Pod::UI.warn e
+    end
     begin
       expo_patch_react_imports!(installer)
     rescue => e
