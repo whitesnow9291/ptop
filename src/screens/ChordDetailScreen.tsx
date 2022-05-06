@@ -10,12 +10,16 @@ const styles = StyleSheet.create({
     },
     chordItem: {
         backgroundColor: COLORS.white,
-        padding: 10,
         borderBottomColor: COLORS.gray,
-        borderBottomWidth: 0.2
+        borderBottomWidth: 0.2,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-end'
     },
     imageStyle: {
-        width: '100%',
+        maxWidth: '100%',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     }
 })
 export const ChordDetailScreen = (props) => {
@@ -24,7 +28,7 @@ export const ChordDetailScreen = (props) => {
     const renderItem = ({ item, index }) => {
         return (
             <View style={styles.chordItem}>
-                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{index + 1}</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 20,  }}>{index + 1}.</Text>
                 <Image source={item} style={styles.imageStyle} resizeMode="contain" />
             </View>
         )
@@ -32,8 +36,8 @@ export const ChordDetailScreen = (props) => {
 
     return (
         <View style={styles.container}>
-            <View style={{alignItems: 'center', paddingVertical: 10}}>
-                <Text style={{ fontWeight: 'bold', fontSize: 24 }}>{chord.label}</Text>
+            <View style={{ paddingVertical: 10 }}>
+                <Text style={{ fontWeight: 'bold', fontSize: 24, paddingHorizontal: 10 }}>{chord.label}</Text>
             </View>
             <FlatList
                 renderItem={renderItem}
