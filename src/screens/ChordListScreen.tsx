@@ -24,7 +24,9 @@ const styles = StyleSheet.create({
 const ITEM_HEIGHT = 30
 export const ChordListScreen = (props) => {
     const navigation = useNavigation()
-    const limitedChords = CHORDS.slice(0, 5)
+    const limitedChords = CHORDS.slice(0, 5).sort((a, b) => {
+        return a.label > b.label
+    })
     const onNavigateToChordDetail = (chord) => {
         navigation.navigate('ChordDetailScreen', chord = { chord })
     }
@@ -32,7 +34,7 @@ export const ChordListScreen = (props) => {
         <TouchableOpacity style={styles.chordItem}
             onPress={() => onNavigateToChordDetail(item)}>
             <Text>{item.label}</Text>
-            <Ionicons name="chevron-forward-outline" size={32} color='gray'/>
+            <Ionicons name="chevron-forward-outline" size={32} color='gray' />
         </TouchableOpacity>
     );
 

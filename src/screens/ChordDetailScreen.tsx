@@ -21,9 +21,10 @@ const styles = StyleSheet.create({
 export const ChordDetailScreen = (props) => {
     const { chord } = props.route.params
     console.info(chord.label)
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item, index }) => {
         return (
             <View style={styles.chordItem}>
+                <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{index + 1}</Text>
                 <Image source={item} style={styles.imageStyle} resizeMode="contain" />
             </View>
         )
@@ -31,6 +32,9 @@ export const ChordDetailScreen = (props) => {
 
     return (
         <View style={styles.container}>
+            <View style={{alignItems: 'center', paddingVertical: 10}}>
+                <Text style={{ fontWeight: 'bold', fontSize: 24 }}>{chord.label}</Text>
+            </View>
             <FlatList
                 renderItem={renderItem}
                 data={chord.images}
