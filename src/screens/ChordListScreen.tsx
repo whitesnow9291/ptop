@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 const ITEM_HEIGHT = 30
 export const ChordListScreen = (props) => {
     const navigation = useNavigation()
-    const limitedChords = CHORDS.slice(0, 5).sort((a, b) => {
+    const limitedChords = CHORDS.sort((a, b) => {
         return a.label > b.label
     })
     const onNavigateToChordDetail = (chord) => {
