@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import { View, StyleSheet, FlatList, Image } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { CHORDS } from '../assets/chords';
 import { COLORS } from '../assets/colors';
 import Text from './components/Text'
@@ -39,7 +40,7 @@ export const ChordDetailScreen = (props) => {
         )
     };
 
-    return (
+    return (<SafeAreaView style={{ flex: 1, }} edges={['right', 'bottom', 'left']}>
         <View style={styles.container}>
             <View style={{ paddingVertical: 10 }}>
                 <Text style={{ fontWeight: 'bold', fontSize: 24, paddingHorizontal: 10 }}>{chord.label}</Text>
@@ -50,5 +51,6 @@ export const ChordDetailScreen = (props) => {
                 keyExtractor={(item, index) => String(index)}
             />
         </View>
+    </SafeAreaView>
     );
 }

@@ -38,7 +38,7 @@ export const ChordListScreen = (props) => {
         </TouchableOpacity>
     );
 
-    return (
+    return (<SafeAreaView style={{ flex: 1, }} edges={['right', 'bottom', 'left']}>
         <Content style={{ flex: 1 }}>
             <CustomAdMobBanner />
             <View style={{ flex: 1 }}>
@@ -49,5 +49,6 @@ export const ChordListScreen = (props) => {
                 />
             </View>
         </Content>
+    </SafeAreaView>
     );
 }
