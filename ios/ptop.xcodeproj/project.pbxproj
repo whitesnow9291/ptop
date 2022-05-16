@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		064204A82821617300018D01 /* image_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 064204A72821617300018D01 /* image_splash.png */; };
 		0662387E282579CC00E6E79B /* treble clef.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0662387D282579CC00E6E79B /* treble clef.jpg */; };
+		068A7D3A282FFCEA00F36DA7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A7D39282FFCEA00F36DA7 /* File.swift */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -23,6 +24,7 @@
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		064204A72821617300018D01 /* image_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_splash.png; sourceTree = "<group>"; };
 		0662387D282579CC00E6E79B /* treble clef.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "treble clef.jpg"; path = "../src/assets/images/treble clef.jpg"; sourceTree = "<group>"; };
+		068A7D39282FFCEA00F36DA7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		08A79F918E3BB8A967F044F8 /* Pods-ptop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ptop.release.xcconfig"; path = "Target Support Files/Pods-ptop/Pods-ptop.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ptop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ptop/AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				068A7D39282FFCEA00F36DA7 /* File.swift */,
 				0662387D282579CC00E6E79B /* treble clef.jpg */,
 				064204A72821617300018D01 /* image_splash.png */,
 				13B07FAE1A68108700A75B9A /* ptop */,
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				068A7D3A282FFCEA00F36DA7 /* File.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
@@ -324,7 +328,7 @@
 				CODE_SIGN_ENTITLEMENTS = ptop/ptop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VGSQPDU3S3;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -360,7 +364,7 @@
 				CODE_SIGN_ENTITLEMENTS = ptop/ptop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VGSQPDU3S3;
 				INFOPLIST_FILE = ptop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
