@@ -10,6 +10,7 @@
 		064204A82821617300018D01 /* image_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 064204A72821617300018D01 /* image_splash.png */; };
 		0662387E282579CC00E6E79B /* treble clef.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0662387D282579CC00E6E79B /* treble clef.jpg */; };
 		068A7D3A282FFCEA00F36DA7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A7D39282FFCEA00F36DA7 /* File.swift */; };
+		06B2C47A2832A31C00C89DCF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B2C478283298CC00C89DCF /* StoreKit.framework */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -25,6 +26,7 @@
 		064204A72821617300018D01 /* image_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_splash.png; sourceTree = "<group>"; };
 		0662387D282579CC00E6E79B /* treble clef.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "treble clef.jpg"; path = "../src/assets/images/treble clef.jpg"; sourceTree = "<group>"; };
 		068A7D39282FFCEA00F36DA7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		06B2C478283298CC00C89DCF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		08A79F918E3BB8A967F044F8 /* Pods-ptop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ptop.release.xcconfig"; path = "Target Support Files/Pods-ptop/Pods-ptop.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ptop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ptop/AppDelegate.h; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FF391072A78393031488516 /* libPods-ptop.a in Frameworks */,
+				06B2C47A2832A31C00C89DCF /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +77,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06B2C478283298CC00C89DCF /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				2A6B67F264C1D165AE142135 /* libPods-ptop.a */,
 			);
@@ -182,7 +186,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = VGSQPDU3S3;
 						LastSwiftMigration = 1250;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -326,10 +330,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ptop/ptop.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = VGSQPDU3S3;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -346,7 +350,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nomuranori9291.ptop;
 				PRODUCT_NAME = ptop;
-				PROVISIONING_PROFILE_SPECIFIER = "IOS distribution profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ptop/ptop-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -362,10 +366,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ptop/ptop.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = VGSQPDU3S3;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ptop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -377,7 +381,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nomuranori9291.ptop;
 				PRODUCT_NAME = ptop;
-				PROVISIONING_PROFILE_SPECIFIER = "IOS distribution profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ptop/ptop-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

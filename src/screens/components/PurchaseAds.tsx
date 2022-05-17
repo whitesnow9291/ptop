@@ -1,19 +1,19 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import {
-	Button, Card, StyleService, Text, useStyleSheet, useTheme
-} from '@ui-kitten/components';
+
 import React, { useState } from 'react';
-import { ActivityIndicator, Platform, View } from 'react-native';
+import { ActivityIndicator, Platform, View, StyleSheet, Button } from 'react-native';
 import * as RNIap from 'react-native-iap';
-
-const PURCHASE_ADS_ID = "AAAA"
-export const PurchasePrintFeature = (props) => {
+import Text from '@app/screens/components/Text'
+import { Product } from 'react-native-iap';
+import { PURCHASE_ADS_ID } from '@app/assets/constants';
+import { useDispatch } from 'react-redux';
+import { savePurchasedProducts } from '@app/redux/reducers/user';
+export const PurchaseAds = (props) => {
 	const navigation = useNavigation()
-
-	const styles = useStyleSheet(themedStyles);
+	const dispatch = useDispatch()
 
 	const [isLoading, setIsLoading] = useState(false)
-	const [printProduct, setAdsProduct] = useState(null)
+	const [adsProduct, setAdsProduct] = useState(null)
 	const [alreadyPurchased, setAlreadyPurchased] = useState(false)
 
 	useFocusEffect(React.useCallback(() => {
@@ -23,85 +23,84 @@ export const PurchasePrintFeature = (props) => {
 
 	const getPurchaseAdProduct = async () => {
 
-	    try {
-	      setIsLoading(true)
-	      const itemSubs = Platform.select({
-	        ios: [PURCHASE_ADS_ID],
-	      });
-	      const Products = await RNIap.getSubscriptions(itemSubs);
-	      setIsLoading(false)
+		try {
+			setIsLoading(true)
+			const itemIds = Platform.select({
+				ios: [PURCHASE_ADS_ID],
+			});
+			const app_products: Product[] = await RNIap.getProducts(itemIds);
+			setIsLoading(false)
 
-	      if (Products.length !== 0) {
-	        if (Platform.OS === 'android') {
-	          //Your logic here to save the products in states etc
-	        } else if (Platform.OS === 'ios') {
-	          // your logic here to save the products in states etc
-	          console.info('ads product ====> ', Products[0])
-	          setAdsProduct(Products[0])
-	          // Make sure to check the response differently for android and ios as it is different for both
-	        }
-	      }
-	    } catch (err) {
-	      setIsLoading(false)
-	    }
+			if (app_products.length !== 0) {
+				if (Platform.OS === 'android') {
+					//Your logic here to save the products in states etc
+				} else if (Platform.OS === 'ios') {
+					// your logic here to save the products in states etc
+					setAdsProduct(app_products[0])
+					// Make sure to check the response differently for android and ios as it is different for both
+				}
+			}
+		} catch (err) {
+			setIsLoading(false)
+		}
 	};
 
 	const onPurchaseProduct = async () => {
-	    try {
-	      setIsLoading(true)
-	      const itemSubs = Platform.select({
-	        ios: [PURCHASE_ADS_ID],
-	      });
-	      const Products = await RNIap.getProducts(itemSubs);
+		try {
+			setIsLoading(true)
+			const itemSubs = Platform.select({
+				ios: [PURCHASE_ADS_ID],
+			});
+			const product = await RNIap.requestPurchase(adsProduct.productId, false);
 
-	      if (Products.length !== 0) {
-	        if (Platform.OS === 'android') {
-	          //Your logic here to save the products in states etc
-	        } else if (Platform.OS === 'ios') {
-	          // your logic here to save the products in states etc
-	          const product = await RNIap.requestPurchase(Products[0].productId, false);
-
-	          // Make sure to check the response differently for android and ios as it is different for both
-	        }
-
-	      }
-	      setIsLoading(false)
-	    } catch (err) {
-	      setIsLoading(false)
-	    }
+			setIsLoading(false)
+		} catch (err) {
+			setIsLoading(false)
+		}
 	}
 	const CustomButton = (props) => {
 		return <Button {...props} style={styles.custombutton} />
 	}
 
-
-	return <Card status='info'
-          style={styles.card}
-          header={(props) => <View {...props}><Text category='h6' status='primary'>Print Feature</Text></View>}>
-      		{isLoading && <ActivityIndicator />}
-      		{alreadyPurchased && <Text status='success'>Purchased!</Text>}
-          	{!alreadyPurchased && printProduct && <CustomButton 
-          		status='info'
-          		onPress={onPurchaseProduct}
-          		>
-          		Purchase Print Feature - {printProduct.localizedPrice}
-          	</CustomButton>}
-        </Card>
+	const onRestorePurchase = async () => {
+		const result = await RNIap.getAvailablePurchases()
+		dispatch(savePurchasedProducts(result))
+		if (result.length > 0) {
+			alert('Purchase restored successfully!')
+		} else {
+			alert('Not found purchases')
+		}
+	}
+	return <View
+		style={styles.card}>
+		{isLoading && <ActivityIndicator />}
+		{alreadyPurchased && <Text status='success'>Purchased!</Text>}
+		{!alreadyPurchased && adsProduct && <CustomButton
+			onPress={onPurchaseProduct}
+			title={`Remove Ads - ${adsProduct.localizedPrice}`}
+		>
+			Remove Ads - {adsProduct.localizedPrice}
+		</CustomButton>}
+		<CustomButton
+			onPress={onRestorePurchase}
+			title="I already purchased!"
+		/>
+	</View>
 }
 
 
-const themedStyles = StyleService.create({
-  safeArea: {
-    flex: 1,
-  },
-  layout: {
-    padding: 15,
-    marginTop: 15,
-  },
-  card: {
-    marginVertical: 15
-  },
-  custombutton: {
-    marginVertical: 4
-  }
+const styles = StyleSheet.create({
+	safeArea: {
+		flex: 1,
+	},
+	layout: {
+		padding: 15,
+		marginTop: 15,
+	},
+	card: {
+		marginVertical: 15
+	},
+	custombutton: {
+		marginVertical: 4
+	}
 });

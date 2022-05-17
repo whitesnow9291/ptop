@@ -1339,7 +1339,7 @@ export const CHORDS = [
     },
     {
         "id": 52,
-        "label": "G+7_",
+        "label": "G+7",
         "images": [
             require('./chords/52/image1.png'),
             require('./chords/52/image2.png'),

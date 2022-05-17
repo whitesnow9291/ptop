@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import RNIap, { ProductPurchase, PurchaseError, purchaseErrorListener, purchaseUpdatedListener } from 'react-native-iap';
+import RNIap, { Product, ProductPurchase, PurchaseError, purchaseErrorListener, purchaseUpdatedListener } from 'react-native-iap';
 import { purchasedAdSub } from '../services/appservice';
+import { useDispatch } from 'react-redux'
+import { addPurchasedProducts } from '@app/redux/reducers/user';
 
 var purchaseUpdateSubscription: any = null;
 var purchaseErrorSubscription: any = null;
 export const RootView = (props) => {
-
+  const dispatch = useDispatch()
   useEffect(() => {
 
     // in app purchase
     RNIap.initConnection().then(() => {
+
       purchaseUpdateSubscription = purchaseUpdatedListener((purchase: InAppPurchase | SubscriptionPurchase | ProductPurchase) => {
         const { transactionReceipt, ...rest } = purchase
 
         if (transactionReceipt) {
           RNIap.finishTransaction(purchase).then(() => {
-            console.info('Purchased successfully ===>', purchase)
-            purchasedAdSub.next(purchase)
+            console.info('Purchased successfully ===>', purchase.productId)
+            dispatch(addPurchasedProducts(purchase))
           });
         }
       });
@@ -24,6 +27,8 @@ export const RootView = (props) => {
       purchaseErrorSubscription = purchaseErrorListener((error: PurchaseError) => {
         console.error('purchase error=>', error)
       });
+    }).catch((e) => {
+      console.info('=== error in app purchase init connection ===', JSON.stringify(e, null, 4))
     })
 
     return (() => {
