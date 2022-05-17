@@ -34,9 +34,9 @@ export const ChordListScreen = (props) => {
         const hasAdPurchased = purchasedProducts.filter(p => p.productId == PURCHASE_ADS_ID)
         if (hasAdPurchased) {
             setPurchasedAd(true)
-            // navigation.setOptions({
-            //     headerRight: null
-            // })
+            navigation.setOptions({
+                headerRight: null
+            })
         }
     }, [purchasedProducts])
 
