@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { View, StyleSheet, FlatList, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { CHORDS } from '../assets/chords';
 import { COLORS } from '../assets/colors';
 import Text from './components/Text'
+import { WebView } from 'react-native-webview';
 const styles = StyleSheet.create({
     container: {
 
@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     }
 })
+
 export const ChordDetailScreen = (props) => {
     const { chord } = props.route.params
-    console.info(chord.label)
     const renderItem = ({ item, index }) => {
         return (
             <View style={styles.chordItem}>

@@ -29,6 +29,7 @@ export const CustomAdMobBanner = (props) => {
             adUnitID={ADMOB_APP_UNIT_ID.ANDROID} // Test ID, Replace with your-admob-unit-id
             servePersonalizedAds // true or false
             onDidFailToReceiveAdWithError={bannerError} />
+    } else {
+        return null
     }
-
 }

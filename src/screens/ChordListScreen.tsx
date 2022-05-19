@@ -31,7 +31,7 @@ export const ChordListScreen = (props) => {
     const [purchasedAd, setPurchasedAd] = useState(false)
 
     useEffect(() => {
-        const hasAdPurchased = purchasedProducts.filter(p => p.productId == PURCHASE_ADS_ID)
+        const hasAdPurchased = purchasedProducts.filter(p => p.productId == PURCHASE_ADS_ID)[0]
         if (hasAdPurchased) {
             setPurchasedAd(true)
             navigation.setOptions({
@@ -40,8 +40,8 @@ export const ChordListScreen = (props) => {
         }
     }, [purchasedProducts])
 
-    const limitedChords = CHORDS.sort((a, b) => {
-        return a.label > b.label
+    const sortedChords = CHORDS.sort((a, b) => {
+        return Number(a.id) > Number(b.id)
     })
     const onNavigateToChordDetail = (chord) => {
         navigation.navigate('ChordDetailScreen', chord = { chord })
@@ -59,7 +59,7 @@ export const ChordListScreen = (props) => {
             {!purchasedAd && <CustomAdMobBanner />}
             <View style={{ flex: 1 }}>
                 <FlatList
-                    data={limitedChords}
+                    data={sortedChords}
                     renderItem={renderItem}
                     keyExtractor={item => String(item.id)}
                 />
