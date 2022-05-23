@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ChordListScreen } from './src/screens/ChordListScreen';
@@ -11,6 +11,7 @@ import { Provider, useSelector } from 'react-redux';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@app/redux/store';
+import { request, PERMISSIONS } from 'react-native-permissions'
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,11 @@ function MainNavigator() {
   )
 }
 export default function App() {
+
+  useEffect(() => {
+    request(PERMISSIONS.IOS.APP_TRACKING_TRANSPARENCY)
+  }, [])
+
   return (
 
     <Provider store={store}>
