@@ -3595,7 +3595,7 @@ export const CHORDS = [
    },
    {
       "id": "134",
-      "label": " G7D to D7",
+      "label": " G7/D to D7",
       "images": [
          require("../assets/chords/134/imagerId6.png")
       ]

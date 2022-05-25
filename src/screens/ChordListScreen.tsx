@@ -40,6 +40,7 @@ export const ChordListScreen = (props) => {
         }
     }, [purchasedProducts])
 
+    
     const sortedChords = CHORDS.sort((a, b) => {
         return Number(a.id) > Number(b.id)
     })

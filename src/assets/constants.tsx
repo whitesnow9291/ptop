@@ -4,8 +4,8 @@ import Constants from 'expo-constants';
 export const IS_PRODUCTION = Constants.isDevice && !__DEV__
 export const PURCHASE_ADS_ID = "pathwayPurchaseAd"
 
-const IOS_ADMOB_UNIT_TEST_ID = 'ca-app-pub-3940256099942544/2934735716'
-const IOS_ADMOB_UNIT_PROD_ID = 'ca-app-pub-9348279741233172/1449414470'
+const IOS_ADMOB_UNIT_TEST_ID = 'ca-app-pub-3940256099942544/4411468910'
+const IOS_ADMOB_UNIT_PROD_ID = 'ca-app-pub-9348279741233172/4984142838'
 const ANDROID_ADMOB_UNIT_TEST_ID = 'ca-app-pub-3940256099942544/6300978111'
 const ANDROID_ADMOB_UNIT_PROD_ID = 'ca-app-pub-9348279741233172/2073027165'
 

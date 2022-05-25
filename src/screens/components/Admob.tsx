@@ -1,5 +1,5 @@
-import React from 'react'
-import { Platform } from 'react-native';
+import React, { useEffect } from 'react'
+import { Platform, View } from 'react-native';
 import {
     AdMobBanner,
     AdMobInterstitial,
@@ -9,27 +9,35 @@ import {
 } from 'expo-ads-admob';
 import { ADMOB_APP_UNIT_ID } from '../../assets/constants';
 
+const AD_INTERVAL = 60 * 15
 export const CustomAdMobBanner = (props) => {
-    const bannerError = (err) => {
-        console.info(err)
-    }
-    if (Platform.OS === 'ios') {
 
-        return <AdMobBanner
-            bannerSize="fullBanner"
-            adUnitID={ADMOB_APP_UNIT_ID.IOS} // Test ID, Replace with your-admob-unit-id
-            servePersonalizedAds // true or false
-            onDidFailToReceiveAdWithError={bannerError} />
-    }
 
-    if (Platform.OS === 'android') {
+    useEffect(() => {
+        showAds()
 
-        return <AdMobBanner
-            bannerSize="fullBanner"
-            adUnitID={ADMOB_APP_UNIT_ID.ANDROID} // Test ID, Replace with your-admob-unit-id
-            servePersonalizedAds // true or false
-            onDidFailToReceiveAdWithError={bannerError} />
-    } else {
-        return null
+        AdMobInterstitial.addEventListener('interstitialDidClose', () => {
+            setTimeout(() => {
+                showAds()
+            }, AD_INTERVAL);
+        })
+        return () => {
+            AdMobInterstitial.removeAllListeners()
+        }
+    }, [])
+
+
+    const showAds = async () => {
+        let unitId = ADMOB_APP_UNIT_ID.IOS
+
+        if (Platform.OS === 'android') {
+            unitId = ADMOB_APP_UNIT_ID.ANDROID
+        }
+        await AdMobInterstitial.setAdUnitID(unitId); // Test ID, Replace with your-admob-unit-id
+        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
+        await AdMobInterstitial.showAdAsync();
     }
+    return <View>
+
+    </View>
 }

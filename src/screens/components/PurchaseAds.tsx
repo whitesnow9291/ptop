@@ -83,7 +83,7 @@ export const PurchaseAds = (props) => {
 		</CustomButton>}
 		<CustomButton
 			onPress={onRestorePurchase}
-			title="I already purchased!"
+			title="Restore"
 		/>
 	</View>
 }
