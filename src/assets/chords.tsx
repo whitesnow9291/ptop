@@ -2096,7 +2096,7 @@ export const CHORDS = [
    },
    {
       "id": "54",
-      "label": " C7 to C#07 (Fully Diminished)",
+      "label": " C7 to C#0 (Fully Diminished)",
       "images": [
          require("../assets/chords/54/imagerId6.png"),
          require("../assets/chords/54/imagerId7.png"),
@@ -2379,6 +2379,8 @@ export const CHORDS = [
       "id": "27",
       "label": " Bb minor",
       "images": [
+         require("../assets/chords/27/image2.png"),
+         require("../assets/chords/27/image6.png"),
          require("../assets/chords/27/imagerId6.png"),
          require("../assets/chords/27/imagerId7.png"),
          require("../assets/chords/27/imagerId8.png"),

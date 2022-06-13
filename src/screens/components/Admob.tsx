@@ -9,7 +9,7 @@ import {
 } from 'expo-ads-admob';
 import { ADMOB_APP_UNIT_ID } from '../../assets/constants';
 
-const AD_INTERVAL = 60 * 15
+const AD_INTERVAL = 60 * 2 * 1000
 export const CustomAdMobBanner = (props) => {
 
 
