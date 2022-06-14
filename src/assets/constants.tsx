@@ -1,7 +1,5 @@
 
-import Constants from 'expo-constants';
-
-export const IS_PRODUCTION = Constants.isDevice && !__DEV__
+export const IS_PRODUCTION = !__DEV__
 export const PURCHASE_ADS_ID = "pathwayPurchaseAd"
 
 const IOS_ADMOB_UNIT_TEST_ID = 'ca-app-pub-3940256099942544/4411468910'

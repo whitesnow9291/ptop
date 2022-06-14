@@ -10,10 +10,11 @@ let unitId = ADMOB_APP_UNIT_ID.IOS
 if (Platform.OS === 'android') {
     unitId = ADMOB_APP_UNIT_ID.ANDROID
 }
-const interestialAd = InterstitialAd.createForAdRequest(unitId);
-
+const interestialAd = InterstitialAd.createForAdRequest(unitId, {
+    requestNonPersonalizedAdsOnly: true,
+    keywords: ['fashion', 'clothing'],
+});
 export const CustomAdMobBanner = (props) => {
-
 
     const [loaded, setLoaded] = useState(false);
 
