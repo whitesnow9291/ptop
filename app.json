@@ -43,14 +43,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      [
-        "expo-ads-admob",
-        {
-          "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
-        }
-      ]
-    ]
+    }
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-9348279741233172/2073027165",
+    "ios_app_id": "ca-app-pub-9348279741233172/4984142838"
   }
 }

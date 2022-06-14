@@ -1,9 +1,6 @@
 PODS:
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
-  - EXAdsAdMob (12.0.1):
-    - ExpoModulesCore
-    - Google-Mobile-Ads-SDK (= 7.69.0)
   - EXApplication (4.0.2):
     - ExpoModulesCore
   - EXConstants (13.0.2):
@@ -111,23 +108,30 @@ PODS:
     - React-jsi (= 0.64.3)
     - ReactCommon/turbomodule/core (= 0.64.3)
   - glog (0.3.5)
-  - Google-Mobile-Ads-SDK (7.69.0):
-    - GoogleAppMeasurement (~> 7.0)
-    - GoogleUserMessagingPlatform (~> 1.1)
-  - GoogleAppMeasurement (7.11.0):
-    - GoogleAppMeasurement/AdIdSupport (= 7.11.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - Google-Mobile-Ads-SDK (9.3.0):
+    - GoogleAppMeasurement (< 9.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleAppMeasurement (8.15.0):
+    - GoogleAppMeasurement/AdIdSupport (= 8.15.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (7.11.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - GoogleAppMeasurement/AdIdSupport (8.15.0):
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.15.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleUserMessagingPlatform (1.4.0)
+  - GoogleAppMeasurement/WithoutAdIdSupport (8.15.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
+    - nanopb (~> 2.30908.0)
+  - GoogleUserMessagingPlatform (2.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -416,6 +420,10 @@ PODS:
     - React-perflogger (= 0.64.3)
   - RNCAsyncStorage (1.17.4):
     - React-Core
+  - RNGoogleMobileAds (6.3.0):
+    - Google-Mobile-Ads-SDK (= 9.3.0)
+    - GoogleUserMessagingPlatform (= 2.0.0)
+    - React-Core
   - RNIap (8.0.8):
     - React-Core
   - RNPermissions (3.3.1):
@@ -427,7 +435,6 @@ PODS:
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - EXAdsAdMob (from `../node_modules/expo-ads-admob/ios`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
@@ -479,6 +486,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNGoogleMobileAds (from `../node_modules/react-native-google-mobile-ads`)
   - RNIap (from `../node_modules/react-native-iap`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -497,8 +505,6 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
-  EXAdsAdMob:
-    :path: "../node_modules/expo-ads-admob/ios"
   EXApplication:
     :path: "../node_modules/expo-application/ios"
   EXConstants:
@@ -595,6 +601,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNGoogleMobileAds:
+    :path: "../node_modules/react-native-google-mobile-ads"
   RNIap:
     :path: "../node_modules/react-native-iap"
   RNPermissions:
@@ -607,7 +615,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
-  EXAdsAdMob: 7e8f57bede074538cc091d595fefbe22b6643be7
   EXApplication: 54fe5bd6268d697771645e8f1aef8b806a65247a
   EXConstants: 88bf79622fbd9b476c96d8ec57fe97ca44fe8e3c
   EXErrorRecovery: b0d7582714a2cc896e94a2308a356f94dbf14ef7
@@ -629,9 +636,9 @@ SPEC CHECKSUMS:
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
   FBReactNativeSpec: e2fcf71e938ed81e0703ad69044a436d49a985c0
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
-  Google-Mobile-Ads-SDK: 2f288748a42920d1c744946a460896a95b0e9110
-  GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
-  GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
+  Google-Mobile-Ads-SDK: 2c8ad48ccc3839a5927f7d7c51505a7cd4f0b672
+  GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
+  GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   Permission-AppTrackingTransparency: 507f031f783885aad86f5754bd23edba587b2125
@@ -662,6 +669,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 493d9abb8b23c3f84e19ae221eeba92cadcb70dc
   ReactCommon: 8fea6422328e2fc093e25c9fac67adbcf0f04fb4
   RNCAsyncStorage: 9367a646dc24e3ab7b6874d79bc1bfd0832dce58
+  RNGoogleMobileAds: 2feec54b23bafd7ce3be241251c1ab18d712dfe2
   RNIap: bb56165cc68bfa269e2effd407d6ec0af63e796f
   RNPermissions: 34d678157c800b25b22a488e4d8babb57456e796
   RNScreens: d6da2b9e29cf523832c2542f47bf1287318b1868
