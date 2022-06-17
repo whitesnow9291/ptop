@@ -37,15 +37,24 @@ export default function App() {
 
   useEffect(() => {
     request(PERMISSIONS.IOS.APP_TRACKING_TRANSPARENCY)
-
+    mobileAds()
+      .setRequestConfiguration({
+        // An array of test device IDs to add to the allow list.
+        testDeviceIdentifiers: ['cfade5b177e627a295ab99d4e2b000c5', 'EMULATOR'],
+      })
+      .then((res) => {
+        console.info('=== ad request conf ===', JSON.stringify(res, null, 4))
+        // Request config successfully set!
+      });
     mobileAds()
       .initialize()
       .then(adapterStatuses => {
+        console.info('=== adapter ===', JSON.stringify(adapterStatuses, null, 4))
         // Initialization complete!
       })
-      .catch( err => {
+      .catch(err => {
         console.info('=== err ===', JSON.stringify(err, null, 4))
-      } );
+      });
   }, [])
 
   return (

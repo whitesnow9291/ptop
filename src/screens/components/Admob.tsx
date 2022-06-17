@@ -1,51 +1,68 @@
 import React, { useEffect, useState } from 'react'
 import { Platform, View } from 'react-native';
-import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, AdEventType } from 'react-native-google-mobile-ads';
+import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, AdEventType, RewardedAdEventType } from 'react-native-google-mobile-ads';
 
-import { ADMOB_APP_UNIT_ID } from '../../assets/constants';
+import { ADMOB_APP_UNIT_ID, IOS_ADMOB_UNIT_PROD_ID, IOS_REWARD_PROD_ID, IS_PRODUCTION } from '../../assets/constants';
 
 const AD_INTERVAL = 2 * 1000 * 60
-let unitId = ADMOB_APP_UNIT_ID.IOS
+
+let rewardUnitId = (IS_PRODUCTION) ? IOS_REWARD_PROD_ID : TestIds.REWARDED
 
 if (Platform.OS === 'android') {
-    unitId = ADMOB_APP_UNIT_ID.ANDROID
+    rewardUnitId = ADMOB_APP_UNIT_ID.ANDROID
 }
-const interestialAd = InterstitialAd.createForAdRequest(unitId, {
+
+const rewardedAd = RewardedAd.createForAdRequest(rewardUnitId, {
     requestNonPersonalizedAdsOnly: true,
     keywords: ['fashion', 'clothing'],
 });
 export const CustomAdMobBanner = (props) => {
 
+
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        const unsubscribe = interestialAd.addAdEventListener(AdEventType.LOADED, () => {
+        const unsubscribeLoaded = rewardedAd.addAdEventListener(RewardedAdEventType.LOADED, () => {
             setLoaded(true);
         });
 
-        // Start loading the interstitial straight away
-        interestialAd.load();
+        const unsubscribeEarned = rewardedAd.addAdEventListener(
+            RewardedAdEventType.EARNED_REWARD,
+            reward => {
+                console.log('User earned reward of ', reward);
+            },
+        );
+
+        const unsubscribeError = rewardedAd.addAdEventListener(
+            AdEventType.ERROR,
+            error => {
+                console.info('=== ad error ===', JSON.stringify(error, null, 4))
+            },
+        );
+        // Start loading the rewarded ad straight away
         // Unsubscribe from events on unmount
-        return () => {
-            setLoaded(false)
-            unsubscribe()
-        };
-    }, []);
-    useEffect(() => {
-        const unsubscribe = interestialAd.addAdEventListener(AdEventType.CLOSED, () => {
-            setLoaded(false)
-            setTimeout(() => {
-                interestialAd.load();
-            }, AD_INTERVAL);
-        });
+        rewardedAd.load();
 
         return () => {
-            unsubscribe()
+            unsubscribeLoaded();
+            unsubscribeEarned();
+            unsubscribeError();
         };
     }, []);
+
+
     useEffect(() => {
+
+        const timerId = setInterval(function () {
+            setLoaded(false)
+            rewardedAd.load();
+        }, AD_INTERVAL)
+
         if (loaded) {
-            interestialAd.show()
+            rewardedAd.show()
+        }
+        return () => {
+            clearInterval(timerId)
         }
     }, [loaded])
 

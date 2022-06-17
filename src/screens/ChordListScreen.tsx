@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { CustomAdMobBanner } from './components/Admob';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
-import { PURCHASE_ADS_ID } from '@app/assets/constants';
+import { ADMOB_APP_UNIT_ID, PURCHASE_ADS_ID } from '@app/assets/constants';
 
 const styles = StyleSheet.create({
     chordItem: {
@@ -40,7 +40,7 @@ export const ChordListScreen = (props) => {
         }
     }, [purchasedProducts])
 
-    
+
     const sortedChords = CHORDS.sort((a, b) => {
         return Number(a.id) > Number(b.id)
     })
@@ -59,6 +59,9 @@ export const ChordListScreen = (props) => {
         <Content style={{ flex: 1 }}>
             {!purchasedAd && <CustomAdMobBanner />}
             <View style={{ flex: 1 }}>
+                <View style={{ position: 'absolute', bottom: 0 }}>
+                    <Text>{ADMOB_APP_UNIT_ID.IOS}</Text>
+                </View>
                 <FlatList
                     data={sortedChords}
                     renderItem={renderItem}
