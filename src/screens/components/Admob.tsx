@@ -2,15 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Platform, View } from 'react-native';
 import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, AdEventType, RewardedAdEventType } from 'react-native-google-mobile-ads';
 
-import { ADMOB_APP_UNIT_ID, IOS_ADMOB_UNIT_PROD_ID, IOS_REWARD_PROD_ID, IS_PRODUCTION } from '../../assets/constants';
+import { IOS_REWARD_UNIT_ID, IS_PRODUCTION } from '../../assets/constants';
 
 const AD_INTERVAL = 2 * 1000 * 60
 
-let rewardUnitId = (IS_PRODUCTION) ? IOS_REWARD_PROD_ID : TestIds.REWARDED
-
-if (Platform.OS === 'android') {
-    rewardUnitId = ADMOB_APP_UNIT_ID.ANDROID
-}
+let rewardUnitId = (IS_PRODUCTION) ? IOS_REWARD_UNIT_ID : TestIds.REWARDED 
 
 const rewardedAd = RewardedAd.createForAdRequest(rewardUnitId, {
     requestNonPersonalizedAdsOnly: true,
