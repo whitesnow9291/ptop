@@ -1,14 +1,11 @@
 
-import React from 'react';
-import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Content from './components/Content';
-import { CHORDS } from '../assets/chords';
-import Text from './components/Text'
-import { COLORS } from '../assets/colors';
 import { useNavigation } from '@react-navigation/native';
-import { CustomAdMobBanner } from './components/Admob';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { COLORS } from '../assets/colors';
+import ApplyCoupon from './components/ApplyCoupon';
+import Content from './components/Content';
 import { PurchaseAds } from './components/PurchaseAds';
 
 const styles = StyleSheet.create({
@@ -28,6 +25,7 @@ export const PurchaseAdScreen = (props) => {
 
     return (<SafeAreaView style={{ flex: 1, }} edges={['right', 'bottom', 'left']}>
         <Content style={{ flex: 1 }}>
+            <ApplyCoupon />
             <PurchaseAds />
         </Content>
     </SafeAreaView>

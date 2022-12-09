@@ -3,7 +3,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { ActivityIndicator, Platform, View, StyleSheet, Button } from 'react-native';
 import * as RNIap from 'react-native-iap';
-import Text from '@app/screens/components/Text'
+import AppText from '@app/screens/components/AppText'
 import { Product } from 'react-native-iap';
 import { PURCHASE_ADS_ID } from '@app/assets/constants';
 import { useDispatch } from 'react-redux';
@@ -74,7 +74,7 @@ export const PurchaseAds = (props) => {
 	return <View
 		style={styles.card}>
 		{isLoading && <ActivityIndicator />}
-		{alreadyPurchased && <Text status='success'>Purchased!</Text>}
+		{alreadyPurchased && <AppText status='success'>Purchased!</AppText>}
 		{!alreadyPurchased && adsProduct && <CustomButton
 			onPress={onPurchaseProduct}
 			title={`Remove Ads - ${adsProduct.localizedPrice}`}

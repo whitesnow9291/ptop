@@ -4,7 +4,7 @@ import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Content from './components/Content';
 import { CHORDS } from '../assets/chords';
-import Text from './components/Text'
+import AppText from './components/AppText'
 import { COLORS } from '../assets/colors';
 import { useNavigation } from '@react-navigation/native';
 import { CustomAdMobBanner } from './components/Admob';
@@ -28,12 +28,13 @@ export const ChordListScreen = (props) => {
     const navigation = useNavigation()
     const userData = useSelector(state => state.user)
     const purchasedProducts = userData.purchased_products || []
-    const [purchasedAd, setPurchasedAd] = useState(false)
+    const coupon_success = userData.coupon_success
+    const [hideAd, setHideAd] = useState(false)
 
     useEffect(() => {
         const hasAdPurchased = purchasedProducts.filter(p => p.productId == PURCHASE_ADS_ID)[0]
-        if (hasAdPurchased) {
-            setPurchasedAd(true)
+        if (hasAdPurchased || coupon_success) {
+            setHideAd(true)
             navigation.setOptions({
                 headerRight: null
             })
@@ -50,14 +51,14 @@ export const ChordListScreen = (props) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.chordItem}
             onPress={() => onNavigateToChordDetail(item)}>
-            <Text>{item.label}</Text>
+            <AppText>{item.label}</AppText>
             <Ionicons name="chevron-forward-outline" size={32} color='gray' />
         </TouchableOpacity>
     );
 
     return (<SafeAreaView style={{ flex: 1, }} edges={['right', 'bottom', 'left']}>
         <Content style={{ flex: 1 }}>
-            {!purchasedAd && <CustomAdMobBanner />}
+            {!hideAd && <CustomAdMobBanner />}
             <View style={{ flex: 1 }}>
                 <FlatList
                     data={sortedChords}

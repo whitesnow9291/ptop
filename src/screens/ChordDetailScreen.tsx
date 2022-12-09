@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View, StyleSheet, FlatList, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS } from '../assets/colors';
-import Text from './components/Text'
+import AppText from './components/AppText'
 import { WebView } from 'react-native-webview';
 const styles = StyleSheet.create({
     container: {
@@ -32,7 +32,7 @@ export const ChordDetailScreen = (props) => {
     const renderItem = ({ item, index }) => {
         return (
             <View style={styles.chordItem}>
-                <Text style={{ fontWeight: 'bold', fontSize: 20, }}>{index + 1}.</Text>
+                <AppText style={{ fontWeight: 'bold', fontSize: 20, }}>{index + 1}.</AppText>
                 <View style={styles.chordView}>
                     <Image source={item} style={styles.imageStyle} resizeMode="contain" />
                 </View>
@@ -43,7 +43,7 @@ export const ChordDetailScreen = (props) => {
     return (<SafeAreaView style={{ flex: 1, }} edges={['right', 'bottom', 'left']}>
         <View style={styles.container}>
             <View style={{ paddingVertical: 10 }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 24, paddingHorizontal: 10 }}>{chord.label}</Text>
+                <AppText style={{ fontWeight: 'bold', fontSize: 24, paddingHorizontal: 10 }}>{chord.label}</AppText>
             </View>
             <FlatList
                 renderItem={renderItem}

@@ -9,7 +9,8 @@ export const slice = createSlice({
     push_notifications: [],
 
     // subscription
-    purchased_products: []
+    purchased_products: [],
+    coupon_success: false
   },
   reducers: {
 
@@ -25,6 +26,9 @@ export const slice = createSlice({
     },
     setLoggedIn: (state, action) => {
       state.loggedIn = action.payload;
+    },
+    setCouponSuccess: (state) => {
+      state.coupon_success = true
     },
     setDeviceToken: (state, action) => {
       state.device_token = action.payload
@@ -91,7 +95,7 @@ export const {
   add_push_notification,
   pop_push_notification,
   set_demo_push_notification,
-  
+  setCouponSuccess
 } = slice.actions;
 
 
