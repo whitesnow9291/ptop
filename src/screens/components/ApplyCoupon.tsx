@@ -30,11 +30,11 @@ export default function (props) {
         }
     }
     return <View style={styles.box}>
-        <AppText style={{
+        {/* <AppText style={{
             fontSize: 18,
             color: COLORS.green,
             marginBottom: 10
-        }}>I have a Coupon!</AppText>
+        }}>I have a Coupon!</AppText> */}
         <View style={{
             flexDirection: 'row',
         }}>

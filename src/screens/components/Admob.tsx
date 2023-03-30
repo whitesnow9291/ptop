@@ -4,7 +4,7 @@ import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, AdEventType, 
 
 import { IOS_REWARD_UNIT_ID, IS_PRODUCTION } from '../../assets/constants';
 
-const AD_INTERVAL = 2 * 1000 * 60
+const AD_INTERVAL = 6 * 1000 * 60
 
 let rewardUnitId = (IS_PRODUCTION) ? IOS_REWARD_UNIT_ID : TestIds.REWARDED 
 
