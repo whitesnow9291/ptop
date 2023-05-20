@@ -30,6 +30,7 @@ export const PurchaseAds = (props) => {
 			});
 			const app_products: Product[] = await RNIap.getProducts(itemIds);
 			setIsLoading(false)
+			console.info('=== adsProduct ===', JSON.stringify(app_products, null, 4))
 
 			if (app_products.length !== 0) {
 				if (Platform.OS === 'android') {
